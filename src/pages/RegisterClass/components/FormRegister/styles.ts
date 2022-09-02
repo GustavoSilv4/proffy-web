@@ -61,6 +61,11 @@ export const FormRegisterClass = styled.form`
   }
 `
 
+export const FormError = styled.span`
+  font-size: 0.875rem;
+  color: ${(props) => props.theme.red};
+`
+
 export const AvailabilityContainer = styled.div`
   margin-bottom: 4rem;
 
