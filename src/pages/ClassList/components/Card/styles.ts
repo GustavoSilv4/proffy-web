@@ -28,6 +28,20 @@ export const CardHeader = styled.header`
     height: 5rem;
     border-radius: 50%;
   }
+
+  div {
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: 'Archivo', sans-serif;
+
+      color: ${(props) => props.theme['textpurple-title']};
+    }
+
+    span {
+      color: ${(props) => props.theme['textbase-base']};
+    }
+  }
 `
 
 export const CardContent = styled.main`

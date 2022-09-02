@@ -3,13 +3,33 @@ import iconProffy from '../../assets/Proffy.svg'
 
 import { ContentContainer, Form, FormContainer, Header, HeaderBackground, NoContent } from './styles'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card } from './components/Card'
+import axios from 'axios'
+
+export interface ClassData {
+  id: number
+  name: string
+  image: string
+  cost: string
+  subject: string
+  contact: string
+  biography: string
+}
 
 export function ClassList() {
   const navigate = useNavigate()
 
-  const [teste, setTeste] = useState<boolean>(true)
+  const [classes, setClasses] = useState<ClassData[]>([])
+
+  useEffect(() => {
+    async function getClass() {
+      const response = await axios.get('http://localhost:3001/classes')
+      setClasses(response.data)
+    }
+
+    getClass()
+  }, [])
 
   return (
     <div>
@@ -57,11 +77,20 @@ export function ClassList() {
         </FormContainer>
 
         <ContentContainer>
-          {teste ? (
+          {classes ? (
             <>
-              <Card />
-              <Card />
-              <Card />
+              {classes.map((classs) => (
+                <Card
+                  key={classs.id}
+                  id={classs.id}
+                  name={classs.name}
+                  image={classs.image}
+                  cost={classs.cost}
+                  subject={classs.subject}
+                  biography={classs.biography}
+                  contact={classs.contact}
+                />
+              ))}
             </>
           ) : (
             <NoContent>

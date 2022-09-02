@@ -1,30 +1,27 @@
+import { ClassData } from '../..'
 import iconWhatsapp from '../../../../assets/icon-whatsapp.svg'
 import { CardBackground, CardContainer, CardContent, CardFooter, CardHeader } from './styles'
 
-export function Card() {
+export function Card(data: ClassData) {
   return (
     <CardContainer>
       <CardBackground>
         <CardHeader>
-          <img src="https://github.com/diego3g.png" alt="" />
+          <img src={data.image} alt="" />
           <div>
-            <h3>Gustavo Silva</h3>
-            <span>Matematica</span>
+            <h3>{data.name}</h3>
+            <span>{data.subject}</span>
           </div>
         </CardHeader>
 
         <CardContent>
-          <span>Entusiasta das melhores tecnologias de química avançada.</span>
-          <span>
-            Apaixonado por explodir coisas em laboratório e por mudar a vida das pessoas através de experiências. Mais
-            de 200.000 pessoas já passaram por uma das minhas explosões.
-          </span>
+          <span>{data.biography}</span>
         </CardContent>
 
         <CardFooter>
           <div>
             <span>Preço/hora</span>
-            <span>R$ 20,00</span>
+            <span>R$ {data.cost}</span>
           </div>
           <button>
             <input type="image" src={iconWhatsapp} alt="" />
